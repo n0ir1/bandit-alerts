@@ -6,12 +6,15 @@
   "author": "n0ir <smile955@inbox.ru>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.4",
     "next": "^7.0.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server",
     "build": "next build",
     "start": "next start"
   }
