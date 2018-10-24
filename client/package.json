@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/n0ir1/bandit-alerts.git",
-  "author": "n0ir <smile955@inbox.ru>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
@@ -14,7 +13,7 @@
     "socket.io-client": "^2.1.1"
   },
   "scripts": {
-    "dev": "node server",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   }

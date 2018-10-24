@@ -1,5 +1,4 @@
 import React from "react";
-import io from "socket.io-client";
 
 export default class Alerts extends React.Component {
   constructor(props) {
@@ -9,12 +8,17 @@ export default class Alerts extends React.Component {
     };
   }
   componentDidMount() {
-    this.socket = io();
-    this.socket.on("message", data => {
-      this.setState({
-        messages: data
-      });
-    });
+    this.socket = new WebSocket("ws://localhost:3001/");
+    this.socket.onopen = () => {
+      console.log("connected a");
+      this.socket.onmessage = data => {
+        console.log(data);
+        this.setState({
+          messages: data
+        });
+        console.log(messages);
+      };
+    };
   }
 
   componentWillUnmount() {

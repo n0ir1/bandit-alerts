@@ -12,7 +12,10 @@ export default class Form extends React.Component {
   }
 
   componentDidMount() {
-    this.socket = io();
+    this.socket = new WebSocket("ws://localhost:3001");
+    this.socket.onopen = () => {
+      console.log("connected f");
+    };
   }
 
   componentWillUnmount() {
@@ -21,7 +24,16 @@ export default class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.socket.emit("message", { ...this.state });
+    this.socket.send(
+      JSON.stringify({
+        event: "message",
+        data: { ...this.state }
+      })
+    );
+
+    this.socket.onmessage = data => {
+      console.log(data);
+    };
 
     this.setState({
       text: "",
